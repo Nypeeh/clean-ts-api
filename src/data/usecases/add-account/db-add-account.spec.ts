@@ -20,6 +20,11 @@ const makeAddAccountRepository = (): AddAccountRepository => {
         email: 'valid_email',
         password: 'hashed_password'
       }
+      let test = {}
+
+      test = {}
+
+      Object.assign(test, {})
 
       return await new Promise(resolve => resolve(fakeAccount))
     }
