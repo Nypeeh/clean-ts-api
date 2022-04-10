@@ -69,7 +69,7 @@ describe('SignUp Controller', () => {
     }
 
     const httpResponse = await sut.handle(httpRequest)
-    expect(httpResponse).toStrictEqual(badRequest(new MissingParamError('name')))
+    expect(httpResponse).toEqual(badRequest(new MissingParamError('name')))
   })
 
   test('Should return 400 if no email is provided', async () => {
@@ -83,7 +83,7 @@ describe('SignUp Controller', () => {
     }
 
     const httpResponse = await await sut.handle(httpRequest)
-    expect(httpResponse).toStrictEqual(badRequest(new MissingParamError('email')))
+    expect(httpResponse).toEqual(badRequest(new MissingParamError('email')))
   })
 
   test('Should return 400 if no password is provided', async () => {
@@ -97,7 +97,7 @@ describe('SignUp Controller', () => {
     }
 
     const httpResponse = await await sut.handle(httpRequest)
-    expect(httpResponse).toStrictEqual(badRequest(new MissingParamError('password')))
+    expect(httpResponse).toEqual(badRequest(new MissingParamError('password')))
   })
 
   test('Should return 400 if no password confirmation is provided', async () => {
@@ -111,7 +111,7 @@ describe('SignUp Controller', () => {
     }
 
     const httpResponse = await await sut.handle(httpRequest)
-    expect(httpResponse).toStrictEqual(badRequest(new MissingParamError('passwordConfirmation')))
+    expect(httpResponse).toEqual(badRequest(new MissingParamError('passwordConfirmation')))
   })
 
   test('Should return 400 if password confirmation fails', async () => {
@@ -126,7 +126,7 @@ describe('SignUp Controller', () => {
     }
 
     const httpResponse = await sut.handle(httpRequest)
-    expect(httpResponse).toStrictEqual(badRequest(new InvalidParamError('passwordConfirmation')))
+    expect(httpResponse).toEqual(badRequest(new InvalidParamError('passwordConfirmation')))
   })
 
   test('Should return 400 if an invalid email is provided', async () => {
@@ -134,7 +134,7 @@ describe('SignUp Controller', () => {
     jest.spyOn(emailValidatorStub, 'isValid').mockReturnValueOnce(false)
 
     const httpResponse = await sut.handle(makeFakeRequest())
-    expect(httpResponse).toStrictEqual(badRequest(new InvalidParamError('email')))
+    expect(httpResponse).toEqual(badRequest(new InvalidParamError('email')))
   })
 
   test('Should call EmailValidator with correct email', async () => {
